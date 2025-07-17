@@ -5,19 +5,16 @@ import { useState } from 'react';
 
 export default function App() {
   const [paused, setPaused] = useState(false);
-  const [hidden, setHidden] = useState(false);
-  const toggleHidden = () => {
-    setHidden(prev => !prev);
-  };
   
+  const [alignment, setAlignment] = useState(null);
   
   const togglePause = () => {
     setPaused(prev => !prev);
   };
   return (
     <>
-      <Header paused={paused} togglePause={togglePause} toggleHidden = {toggleHidden} />
-      <Screen paused={paused} hidden = {hidden} /> {/* 👈 pass paused state to Screen */}
+      <Header paused={paused} togglePause={togglePause} setAlignment={setAlignment} />
+      <Screen paused={paused} alignment={alignment}  /> {/* 👈 pass paused state to Screen */}
     </>
   )
 }
